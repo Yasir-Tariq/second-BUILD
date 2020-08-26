@@ -29,6 +29,9 @@ pipeline {
                   [$class: 'StringParameterValue', name: 'VERSION', value: env.BRANCH_NAME.substring(8)] 
                 ]
               }
+                else {
+                    sh "echo ELSE BLOCK"
+                }
             }
           }
         }
