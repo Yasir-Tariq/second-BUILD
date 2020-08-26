@@ -16,13 +16,10 @@ pipeline {
           }
           if (env.BRANCH_NAME ==~ "staging/v.*") {
             build job: '../rdb-util', wait: false, parameters: [
-              [$class: 'StringParameterValue', name: 'VERSION', value: '.*']
+              [$class: 'StringParameterValue', name: 'VERSION', value: env.BRANCH_NAME.substring(8)] 
             ]
           }
         }
-        build job: '../rdb-util', wait: false, parameters: [
-          [$class: 'StringParameterValue', name: 'VERSION', value: 'dev']
-        ]
       }
     }
 } 
