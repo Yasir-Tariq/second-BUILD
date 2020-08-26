@@ -26,7 +26,7 @@ pipeline {
                 if (env.BRANCH_NAME ==~ "staging/v.*") { 
                 sh "echo SECONDDDDDDDDDD"
                 build job: '../RDB', wait: false, parameters: [
-                  [$class: 'StringParameterValue', name: 'VERSION', value: env.BRANCH_NAME.substring(8)] 
+                  [$class: 'StringParameterValue', name: 'VERSION', value: env.BRANCH_NAME.substring(9)] 
                 ]
               }
                 else {
