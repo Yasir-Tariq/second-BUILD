@@ -13,9 +13,9 @@ pipeline {
             }
         }
         stage('Build rds-util') {
-          when {
-            expression { env.BRANCH_NAME == "staging/dev" || env.BRANCH_NAME == "staging/v.0.1.2" } 
-          }
+          //when {
+            //expression { env.BRANCH_NAME == "staging/dev" || env.BRANCH_NAME == "staging/v.0.1.2" } 
+          //}
           steps {
             script {
               if (env.BRANCH_NAME == "staging/dev") {
