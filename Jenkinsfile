@@ -8,7 +8,6 @@ pipeline {
             steps {
                 script{
                     sh "git rev-parse --abbrev-ref HEAD"
-                    println "${BRANCH_NAME}"
                 }
             }
         }
