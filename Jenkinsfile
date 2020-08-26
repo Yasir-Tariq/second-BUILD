@@ -10,12 +10,12 @@ pipeline {
       steps {
         script {
           if (env.BRANCH_NAME == "staging/dev") {
-            build job: '../rdb-util', wait: false, parameters: [
+            build job: '../RDB', wait: false, parameters: [
               [$class: 'StringParameterValue', name: 'VERSION', value: 'dev']
             ]
           }
           if (env.BRANCH_NAME ==~ "staging/v.*") {
-            build job: '../rdb-util', wait: false, parameters: [
+            build job: '../RDB', wait: false, parameters: [
               [$class: 'StringParameterValue', name: 'VERSION', value: env.BRANCH_NAME.substring(8)] 
             ]
           }
