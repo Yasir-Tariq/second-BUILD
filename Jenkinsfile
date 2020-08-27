@@ -13,9 +13,9 @@ pipeline {
             }
         }
         stage('Build rds-util') {
-          //when {
-            //expression { env.BRANCH_NAME == "staging/dev" || env.BRANCH_NAME == "staging/v.0.1.2" } 
-          //}
+          when {
+            expression { env.BRANCH_NAME == "staging/dev" || env.BRANCH_NAME == "staging/v[0-9].*" } 
+          }
           steps {
             script {
               if (env.BRANCH_NAME == "staging/dev") {
@@ -23,7 +23,7 @@ pipeline {
                   [$class: 'StringParameterValue', name: 'VERSION', value: 'dev']
                 ]
               }
-                if (env.BRANCH_NAME ==~ "staging/v.*") { 
+                if (env.BRANCH_NAME ==~ "staging/v[0-9].*") { 
                 sh "echo SECONDDDDDDDDDD"
                 build job: '../RDB', wait: false, parameters: [
                   [$class: 'StringParameterValue', name: 'VERSION', value: env.BRANCH_NAME.substring(8)] 
