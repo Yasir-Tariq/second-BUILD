@@ -14,7 +14,7 @@ pipeline {
         }
         stage('Build rds-util') {
           when {
-            expression { env.BRANCH_NAME == "staging/dev" || env.BRANCH_NAME == "staging/v[0-9].*" } 
+            expression { env.BRANCH_NAME == "staging/dev" || env.BRANCH_NAME ==~ "staging/v[0-9].*" } 
           }
           steps {
             script {
