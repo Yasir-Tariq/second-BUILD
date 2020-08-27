@@ -19,15 +19,11 @@ pipeline {
           steps {
             script {
               if (env.BRANCH_NAME == "staging/dev") {
-                build job: '../RDB', wait: false, parameters: [
-                  [$class: 'StringParameterValue', name: 'VERSION', value: 'dev']
-                ]
+                build job: '../RDB', wait: false
               }
                 if (env.BRANCH_NAME ==~ "staging/v[0-9].*") { 
                 sh "echo SECONDDDDDDDDDD"
-                build job: '../RDB', wait: false, parameters: [
-                  [$class: 'StringParameterValue', name: 'VERSION', value: env.BRANCH_NAME.substring(9)] 
-                ]
+                build job: '../RDB', wait: false
               }
                 else {
                     sh "echo ELSE BLOCK"
